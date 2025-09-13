@@ -15,10 +15,10 @@ export async function GET() {
       data: result.success ? result.data : undefined,
       error: !result.success ? result.error : undefined,
       environment: {
-        user: process.env.DB_USER,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        database: process.env.DB_NAME
+        user: process.env.PGUSER,
+        host: process.env.PGHOST,
+        port: process.env.PGPORT,
+        database: process.env.PGDATABASE
       }
     });
   } catch (error) {

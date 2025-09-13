@@ -2,11 +2,11 @@ import postgres from "postgres";
 
 // Build connection string from environment variables
 const buildConnectionString = () => {
-  const user = process.env.DB_USER;
-  const password = process.env.DB_PASSWORD;
-  const host = process.env.DB_HOST;
-  const port = process.env.DB_PORT;
-  const database = process.env.DB_NAME;
+  const user = process.env.PGUSER;
+  const password = process.env.PGPASSWORD;
+  const host = process.env.PGHOST;
+  const port = process.env.PGPORT;
+  const database = process.env.PGDATABASE;
 
   if (!user || !password || !host || !port || !database) {
     throw new Error("Missing required database environment variables");
@@ -29,10 +29,10 @@ export async function query(text: string, params?: any[]) {
   try {
     console.log("🔄 Executing query:", text.substring(0, 100) + "...");
     console.log("🔗 Using connection:", {
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      user: process.env.DB_USER,
-      database: process.env.DB_NAME
+      host: process.env.PGHOST,
+      port: process.env.PGPORT,
+      user: process.env.PGUSER,
+      database: process.env.PGDATABASE
     });
 
     const result = await sql.unsafe(text, params || []);

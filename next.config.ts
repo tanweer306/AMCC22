@@ -8,6 +8,23 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
+    experimental: {
+        allowedHosts: true,
+    },
+    // Allow connections from any host for Replit environment
+    async headers() {
+        return [
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'SAMEORIGIN',
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 export default nextConfig;
