@@ -15,28 +15,51 @@ const buildConnectionString = () => {
   return `postgresql://${user}:${password}@${host}:${port}/${database}`;
 };
 
-// Create postgres connection with environment variables
+// Determine SSL configuration based on environment
+const getSSLConfig = () => {
+  // In production, always use SSL with proper verification
+  if (process.env.NODE_ENV === "production") {
+    return { rejectUnauthorized: true };
+  }
+  
+  // In development, be more permissive to handle various database setups
+  if (process.env.DB_SSL_DISABLED === "true") {
+    return false;
+  }
+  
+  // For development, try SSL first but allow self-signed certs
+  return process.env.DB_SSL_REJECT_UNAUTHORIZED === "false" ? 
+    { rejectUnauthorized: false } : 
+    false; // Default to no SSL in development
+};
+
+// Create postgres connection with secure configuration
 const sql = postgres(buildConnectionString(), {
-  ssl:
-  process.env.DB_SSL_REJECT_UNAUTHORIZED === "false" ?
-  { rejectUnauthorized: false } :
-  false,
+  ssl: getSSLConfig(),
   connect_timeout: parseInt(process.env.DB_CONNECTION_TIMEOUT || "10000"),
-  max: parseInt(process.env.DB_MAX_CONNECTIONS || "10")
+  max: parseInt(process.env.DB_MAX_CONNECTIONS || "10"),
+  idle_timeout: parseInt(process.env.DB_IDLE_TIMEOUT || "30000")
 });
 
 export async function query(text: string, params?: any[]) {
   try {
-    console.log("🔄 Executing query:", text.substring(0, 100) + "...");
-    console.log("🔗 Using connection:", {
-      host: process.env.PGHOST,
-      port: process.env.PGPORT,
-      user: process.env.PGUSER,
-      database: process.env.PGDATABASE
-    });
+    // Only log detailed connection info in development
+    if (process.env.NODE_ENV === "development") {
+      console.log("🔄 Executing query:", text.substring(0, 100) + "...");
+      console.log("🔗 Using connection:", {
+        host: process.env.PGHOST,
+        port: process.env.PGPORT,
+        user: process.env.PGUSER,
+        database: process.env.PGDATABASE
+      });
+    }
 
     const result = await sql.unsafe(text, params || []);
-    console.log("✅ Query successful, rows:", result.length);
+    
+    if (process.env.NODE_ENV === "development") {
+      console.log("✅ Query successful, rows:", result.length);
+    }
+    
     return { rows: result, rowCount: result.length };
   } catch (error) {
     console.error("❌ Database query error:", error);

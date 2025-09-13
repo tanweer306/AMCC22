@@ -12,14 +12,16 @@ export async function GET() {
       message: result.success ?
       "Database connection successful!" :
       "Database connection failed",
-      data: result.success ? result.data : undefined,
-      error: !result.success ? result.error : undefined,
-      environment: {
-        user: process.env.PGUSER,
-        host: process.env.PGHOST,
-        port: process.env.PGPORT,
-        database: process.env.PGDATABASE
-      }
+      timestamp: result.success ? result.data?.current_time : undefined,
+      // Remove sensitive environment information in production
+      ...(process.env.NODE_ENV === "development" && {
+        environment: {
+          user: process.env.PGUSER,
+          host: process.env.PGHOST,
+          port: process.env.PGPORT,
+          database: process.env.PGDATABASE
+        }
+      })
     });
   } catch (error) {
     console.error("❌ Test connection API error:", error);
@@ -27,7 +29,10 @@ export async function GET() {
       {
         success: false,
         message: "API error during connection test",
-        error: error instanceof Error ? error.message : "Unknown error"
+        // Only show detailed errors in development
+        ...(process.env.NODE_ENV === "development" && {
+          error: error instanceof Error ? error.message : "Unknown error"
+        })
       },
       { status: 500 }
     );

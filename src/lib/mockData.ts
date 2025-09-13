@@ -1,1 +1,1 @@
-export * from "./companies";
+export { COMPANIES, STATES } from "./companies";
