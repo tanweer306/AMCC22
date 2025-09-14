@@ -8,10 +8,14 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-    // Allow development hosts for Replit environment  
-    experimental: {
-        allowedDevOrigins: ['1ebbc9e2-983f-4125-9681-3b5a40537d39-00-tkfq414fi0ht.worf.replit.dev'],
-    },
+    // Allow development hosts for Replit environment
+    allowedDevOrigins: [
+        '*.replit.dev',
+        '*.worf.replit.dev',
+        '1ebbc9e2-983f-4125-9681-3b5a40537d39-00-tkfq414fi0ht.worf.replit.dev',
+        'localhost:5000',
+        '127.0.0.1:5000'
+    ],
     // Security headers for production
     async headers() {
         return [

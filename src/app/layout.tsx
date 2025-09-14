@@ -14,20 +14,16 @@ export default function RootLayout({
 
 }: {children: React.ReactNode;}) {
   return (
-    <html lang="en" className="h-full" data-oid="77:2ukl">
-      <body
-        className="min-h-screen bg-slate-50 text-slate-900 antialiased"
-        data-oid="kiuzeie">
+    <html lang="en" className="h-full">
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
 
-        <div className="relative flex min-h-screen flex-col" data-oid="dau9twe">
-          <SiteHeader data-oid="avqo3l." />
-          <main
-            className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8"
-            data-oid="nm3jjq7">
+        <div className="relative flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
 
             {children}
           </main>
-          <SiteFooter data-oid=".ju76np" />
+          <SiteFooter />
         </div>
 
 {process.env.NODE_ENV === 'development' && (
@@ -36,7 +32,7 @@ export default function RootLayout({
             strategy="afterInteractive"
             type="module"
             id="https://cdn.jsdelivr.net/gh/onlook-dev/onlook@main/apps/web/client/public/onlook-preload-script.js"
-            data-oid="2hbg6m1">
+            >
           </Script>
         )}
       </body>
@@ -46,47 +42,37 @@ export default function RootLayout({
 
 function SiteHeader() {
   return (
-    <header
-      className="relative isolate overflow-hidden rounded-b-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-sky-700 px-4 py-10 text-white shadow-lg"
-      data-oid="8ifgpkx">
+    <header className="relative isolate overflow-hidden rounded-b-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-sky-700 px-4 py-10 text-white shadow-lg">
 
-      <div
-        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 sm:px-2"
-        data-oid="r2pyw6-">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 sm:px-2">
 
-        <div className="flex items-center gap-3" data-oid="bdyb84p">
-          <div
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 ring-1 ring-white/20"
-            data-oid=":blz-.8">
+        <div className="flex items-center gap-3">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 ring-1 ring-white/20">
 
-            <span className="text-xl font-black" data-oid="-pi_frq">
+            <span className="text-xl font-black">
               A
             </span>
           </div>
-          <div data-oid="xkp0khq">
-            <h1
-              className="text-lg font-semibold tracking-tight sm:text-xl"
-              data-oid="nw2n3p.">
+          <div>
+            <h1 className="text-lg font-semibold tracking-tight sm:text-xl">
 
               AMC Connect
             </h1>
-            <p className="text-xs text-white/80" data-oid="nati8tu">
+            <p className="text-xs text-white/80">
               Find. Select. Register.
             </p>
           </div>
         </div>
-        <div className="hidden items-center gap-4 sm:flex" data-oid="8qxbqgp">
+        <div className="hidden items-center gap-4 sm:flex">
           <a
             href="#amcs"
-            className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur transition hover:bg-white/20"
-            data-oid="jvrcqfu">
+            className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur transition hover:bg-white/20">
 
             Browse AMCs
           </a>
           <a
             href="/register"
-            className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-emerald-50"
-            data-oid="i3l8h25">
+            className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-emerald-50">
 
             Register
           </a>
@@ -98,25 +84,21 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer
-      className="mx-auto w-full max-w-7xl px-4 pb-10 pt-8 text-sm text-slate-500 sm:px-6 lg:px-8"
-      data-oid="cbjdas9">
+    <footer className="mx-auto w-full max-w-7xl px-4 pb-10 pt-8 text-sm text-slate-500 sm:px-6 lg:px-8">
 
-      <div
-        className="flex flex-col items-center justify-between gap-4 sm:flex-row"
-        data-oid="447f6z8">
+      <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
 
-        <p data-oid="r-qt5od">
+        <p>
           © 2025 AMC Connect. All rights reserved.
         </p>
-        <nav className="flex items-center gap-6" data-oid="hw:iqcg">
-          <a href="#" className="hover:text-slate-700" data-oid="_d_1f5n">
+        <nav className="flex items-center gap-6">
+          <a href="#" className="hover:text-slate-700">
             Privacy
           </a>
-          <a href="#" className="hover:text-slate-700" data-oid="6912-xa">
+          <a href="#" className="hover:text-slate-700">
             Terms
           </a>
-          <a href="#" className="hover:text-slate-700" data-oid="x.4gjfh">
+          <a href="#" className="hover:text-slate-700">
             Contact
           </a>
         </nav>
