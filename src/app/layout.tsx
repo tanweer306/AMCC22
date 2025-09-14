@@ -30,13 +30,15 @@ export default function RootLayout({
           <SiteFooter data-oid=".ju76np" />
         </div>
 
-        <Script
-          src="https://cdn.jsdelivr.net/gh/onlook-dev/onlook@main/apps/web/client/public/onlook-preload-script.js"
-          strategy="afterInteractive"
-          type="module"
-          id="https://cdn.jsdelivr.net/gh/onlook-dev/onlook@main/apps/web/client/public/onlook-preload-script.js"
-          data-oid="2hbg6m1">
-        </Script>
+{process.env.NODE_ENV === 'development' && (
+          <Script
+            src="https://cdn.jsdelivr.net/gh/onlook-dev/onlook@main/apps/web/client/public/onlook-preload-script.js"
+            strategy="afterInteractive"
+            type="module"
+            id="https://cdn.jsdelivr.net/gh/onlook-dev/onlook@main/apps/web/client/public/onlook-preload-script.js"
+            data-oid="2hbg6m1">
+          </Script>
+        )}
       </body>
     </html>);
 
@@ -105,7 +107,7 @@ function SiteFooter() {
         data-oid="447f6z8">
 
         <p data-oid="r-qt5od">
-          © {new Date().getFullYear()} AMC Connect. All rights reserved.
+          © 2025 AMC Connect. All rights reserved.
         </p>
         <nav className="flex items-center gap-6" data-oid="hw:iqcg">
           <a href="#" className="hover:text-slate-700" data-oid="_d_1f5n">
