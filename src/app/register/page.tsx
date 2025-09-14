@@ -70,7 +70,7 @@ export default function RegisterPage() {
           <PersonalInfoStep
             data={data}
             updateData={updateData}
-            data-oid="v_2.w_8" />);
+            />);
 
 
 
@@ -79,7 +79,7 @@ export default function RegisterPage() {
           <ProfessionalInfoStep
             data={data}
             updateData={updateData}
-            data-oid="mxz-xkk" />);
+            />);
 
 
 
@@ -88,7 +88,7 @@ export default function RegisterPage() {
           <AddressInfoStep
             data={data}
             updateData={updateData}
-            data-oid="ozlc6a7" />);
+            />);
 
 
 
@@ -97,7 +97,7 @@ export default function RegisterPage() {
           <BusinessInfoStep
             data={data}
             updateData={updateData}
-            data-oid="4rf-z:p" />);
+            />);
 
 
 
@@ -106,7 +106,7 @@ export default function RegisterPage() {
           <DocumentsStep
             data={data}
             updateData={updateData}
-            data-oid="gv510at" />);
+            />);
 
 
 
@@ -116,7 +116,7 @@ export default function RegisterPage() {
             data={data}
             updateData={updateData}
             selectedCompanies={selectedCompanies}
-            data-oid="4m:cvg_" />);
+            />);
 
 
 
@@ -206,71 +206,57 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50" data-oid="register-container">
-      <div className="mx-auto max-w-4xl px-4 py-8" data-oid="v:.xr7b">
+    <div className="min-h-screen bg-slate-50">
+      <div className="mx-auto max-w-4xl px-4 py-8">
         {/* Header */}
-        <div className="mb-8 text-center" data-oid="i8ec4sg">
-          <h1
-            className="text-3xl font-bold text-slate-900 mb-2"
-            data-oid="gbu7kh.">
-
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
             Appraiser Registration
           </h1>
-          <p className="text-slate-600" data-oid="hm-f5i2">
+          <p className="text-slate-600">
             Complete your registration to connect with AMC companies
           </p>
         </div>
 
         {/* Progress */}
-        <div
-          className="mb-8 rounded-2xl bg-white p-6 shadow-sm"
-          data-oid="oxvy3c:">
+        <div className="mb-8 rounded-2xl bg-white p-6 shadow-sm">
 
-          <div
-            className="mb-4 flex items-center justify-between"
-            data-oid="dq5a-c3">
+          <div className="mb-4 flex items-center justify-between">
 
-            <span
-              className="text-sm font-medium text-slate-900"
-              data-oid="xnbjni9">
+            <span className="text-sm font-medium text-slate-900">
 
-              {Math.round(currentStep / 6 * 100)}% Complete
+              {Math.round((currentStep / 6) * 100)}% Complete
             </span>
-            <span className="text-sm text-slate-500" data-oid="991igf6">
+            <span className="text-sm text-slate-500">
               Step {currentStep} of 6
             </span>
           </div>
-          <StepProgress step={currentStep} data-oid="aqlv4qs" />
+          <StepProgress step={currentStep} />
         </div>
 
         {/* Main Content */}
-        <div className="rounded-2xl bg-white shadow-sm" data-oid="xk3y8jf">
-          <div className="border-b border-slate-200 p-6" data-oid="myhs0nc">
-            <h2
-              className="text-xl font-semibold text-slate-900"
-              data-oid="qlx1a1f">
+        <div className="rounded-2xl bg-white shadow-sm">
+          <div className="border-b border-slate-200 p-6">
+            <h2 className="text-xl font-semibold text-slate-900">
 
               {getStepTitle()}
             </h2>
-            <p className="mt-1 text-sm text-slate-600" data-oid="8odefjg">
+            <p className="mt-1 text-sm text-slate-600">
               {getStepDescription()}
             </p>
           </div>
 
-          <div className="p-6" data-oid="6ei60rw">
+          <div className="p-6">
             {renderStep()}
           </div>
 
           {/* Navigation */}
-          <div
-            className="flex items-center justify-between border-t border-slate-200 p-6"
-            data-oid="qy-x.az">
+          <div className="flex items-center justify-between border-t border-slate-200 p-6">
 
             <button
               onClick={goBack}
               disabled={currentStep === 1}
               className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              data-oid="5i3e1p_"
               key="olk-Ql4_">
 
               Previous
@@ -279,7 +265,6 @@ export default function RegisterPage() {
               onClick={goNext}
               disabled={!canProceed() || currentStep === 6}
               className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              data-oid="w:4gzm."
               key="olk-kGpG">
 
               {currentStep === 6 ? "Complete Registration" : "Continue"}
@@ -288,23 +273,19 @@ export default function RegisterPage() {
         </div>
 
         {/* Help */}
-        <div
-          className="mt-8 text-center text-sm text-slate-500"
-          data-oid="mb-g.lc">
+        <div className="mt-8 text-center text-sm text-slate-500">
 
           Need help? Contact our support team at{" "}
           <a
             href="mailto:support@amconnect.com"
-            className="text-emerald-600 hover:text-emerald-700"
-            data-oid="1p:jt4:">
+            className="text-emerald-600 hover:text-emerald-700">
 
             support@amconnect.com
           </a>{" "}
           or{" "}
           <a
             href="tel:555-123-4567"
-            className="text-emerald-600 hover:text-emerald-700"
-            data-oid="dyzl.:s">
+            className="text-emerald-600 hover:text-emerald-700">
 
             (555) 123-4567
           </a>
